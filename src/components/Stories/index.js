@@ -1,49 +1,45 @@
 import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import Story from './../Story/index';
+import styles from './styles';
 
+const paul_pic =
+  'https://img.cinemablend.com/filter:scale/quill/7/3/9/6/6/7/7396672b4a183f9d5c33f305d4fa2f630138d165.jpg?mw=600';
 const data = [
   {
-    imageUri:
-      'https://pbs.twimg.com/media/EaVBP_LXQAIp9hV?format=jpg&name=large',
+    imageUri: paul_pic,
     name: 'bolivez',
     user_id: 111,
   },
   {
-    imageUri:
-      'https://pbs.twimg.com/media/EXBeaYiXYAQ6Q9M?format=jpg&name=large',
+    imageUri: paul_pic,
     name: 'raynaud',
     user_id: 222,
   },
 
   {
-    imageUri:
-      'https://pbs.twimg.com/media/EURlo9iX0AADkLc?format=jpg&name=large',
+    imageUri: paul_pic,
     name: 'noname',
     user_id: 333,
   },
 
   {
-    imageUri:
-      'https://pbs.twimg.com/media/EQRr7TaX0AI9SjF?format=jpg&name=large',
+    imageUri: paul_pic,
     name: 'blessed',
     user_id: 444,
   },
   {
-    imageUri:
-      'https://pbs.twimg.com/media/D_mHo_sWkAAm8KD?format=jpg&name=large',
+    imageUri: paul_pic,
     name: 'katze',
     user_id: 555,
   },
   {
-    imageUri:
-      'https://pbs.twimg.com/media/DwPg2GwXcAAoh9o?format=jpg&name=360x360',
+    imageUri: paul_pic,
     name: 'width',
     user_id: 666,
   },
   {
-    imageUri:
-      'https://pbs.twimg.com/media/Dz2bXwyWkAAtPlA?format=jpg&name=900x900',
+    imageUri: paul_pic,
     name: 'niles',
     user_id: 777,
   },
@@ -51,8 +47,9 @@ const data = [
 
 const Stories = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
+        showsHorizontalScrollIndicator={false}
         horizontal
         data={data}
         renderItem={({item}) => (
@@ -65,5 +62,3 @@ const Stories = () => {
 };
 
 export default Stories;
-
-const styles = StyleSheet.create({});

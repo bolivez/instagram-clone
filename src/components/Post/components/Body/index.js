@@ -1,14 +1,13 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
+import styles from './styles';
 
-const Body = () => {
+const Body = ({imageUri}) => {
   return (
     <View>
-      <Text></Text>
+      <Image source={{uri: imageUri}} style={styles.image} />
     </View>
   );
 };
 
 export default Body;
-
-const styles = StyleSheet.create({});

@@ -1,10 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import Stories from '../../components/Stories';
-import ProfilePicture from './../../components/ProfilePicture/index';
+import Feed from '../../components/Feed';
 
-const HomeScreen = ({uri}) => {
-  return <Stories />;
+const HomeScreen = () => {
+  return (
+    <View>
+      <Feed />
+    </View>
+  );
 };
 
 export default HomeScreen;
