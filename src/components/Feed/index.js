@@ -9,6 +9,7 @@ const Feed = ({post}) => {
       ListHeaderComponent={Stories}
       data={data}
       renderItem={({item}) => <Post post={item} />}
+      keyExtractor={({id}) => id}
     />
   );
 };
@@ -19,6 +20,7 @@ const styles = StyleSheet.create({});
 
 const data = [
   {
+    id: '1',
     postedAt: '1m ago',
     likesCount: 12,
     caption: 'Teriyaki Boyz',
@@ -31,6 +33,7 @@ const data = [
     },
   },
   {
+    id: '2',
     postedAt: '32m ago',
     likesCount: 34,
     caption: 'Teriyaki Boyz',
@@ -43,6 +46,7 @@ const data = [
     },
   },
   {
+    id: '3',
     postedAt: '23m ago',
     likesCount: 56,
     caption: 'Teriyaki Boyz',
@@ -55,6 +59,7 @@ const data = [
     },
   },
   {
+    id: '4',
     postedAt: '23m ago',
     likesCount: 56,
     caption: 'Teriyaki Boyz',
@@ -67,6 +72,7 @@ const data = [
     },
   },
   {
+    id: '5',
     postedAt: '23m ago',
     likesCount: 56,
     caption: 'Teriyaki Boyz',
