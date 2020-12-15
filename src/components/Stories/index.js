@@ -9,39 +9,39 @@ const data = [
   {
     imageUri: paul_pic,
     name: 'bolivez',
-    user_id: 111,
+    user_id: '111',
   },
   {
     imageUri: paul_pic,
     name: 'raynaud',
-    user_id: 222,
+    user_id: '222',
   },
 
   {
     imageUri: paul_pic,
     name: 'noname',
-    user_id: 333,
+    user_id: '333',
   },
 
   {
     imageUri: paul_pic,
     name: 'blessed',
-    user_id: 444,
+    user_id: '444',
   },
   {
     imageUri: paul_pic,
     name: 'katze',
-    user_id: 555,
+    user_id: '555',
   },
   {
     imageUri: paul_pic,
     name: 'width',
-    user_id: 666,
+    user_id: '666',
   },
   {
     imageUri: paul_pic,
     name: 'niles',
-    user_id: 777,
+    user_id: '777',
   },
 ];
 
