@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     width: 75,
     height: 75,
     borderRadius: 75,
-    borderWidth: 3,
+    borderWidth: 2,
     borderColor: 'red',
     marginHorizontal: 3,
   },

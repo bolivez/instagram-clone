@@ -1,24 +1,4 @@
-import React from 'react';
-import {StyleSheet, Text, View, FlatList} from 'react-native';
-import Post from './../Post/index';
-import UserStoryPreview from './../UserStoryPreview/index';
-
-const Feed = ({post}) => {
-  return (
-    <FlatList
-      ListHeaderComponent={UserStoryPreview}
-      data={data}
-      renderItem={({item}) => <Post post={item} />}
-      keyExtractor={({id}) => id}
-    />
-  );
-};
-
-export default Feed;
-
-const styles = StyleSheet.create({});
-
-const data = [
+export default data = [
   {
     id: '1',
     postedAt: '1m ago',
