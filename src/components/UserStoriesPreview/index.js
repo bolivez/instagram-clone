@@ -1,22 +1,36 @@
-import React from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
-import UserStoryPreview from '../UserStoryPreview';
+import React, {useEffect, useState} from 'react';
+import {FlatList} from 'react-native';
+import {API, graphqlOperation} from 'aws-amplify';
+import {listStorys} from '../../graphql/queries';
+import Story from '../UserStoryPreview';
+
 import styles from './styles';
-import storiesData from '../../data/stories';
 
 const Stories = () => {
+  const [stories, setStories] = useState([]);
+
+  useEffect(() => {
+    fetchStories();
+  }, []);
+
+  const fetchStories = async () => {
+    try {
+      const storiesData = await API.graphql(graphqlOperation(listStorys));
+      setStories(storiesData.data.listStorys.items);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
-    <View style={styles.container}>
-      <FlatList
-        showsHorizontalScrollIndicator={false}
-        horizontal
-        data={storiesData}
-        renderItem={({item}) => (
-          <UserStoryPreview imageUri={item.imageUri} name={item.name} />
-        )}
-        keyExtractor={({user_id}) => user_id}
-      />
-    </View>
+    <FlatList
+      data={stories}
+      keyExtractor={({user: {id}}) => id}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      style={styles.container}
+      renderItem={({item}) => <Story story={item} />}
+    />
   );
 };
 

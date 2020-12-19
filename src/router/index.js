@@ -2,7 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import bottomHomeNavigator from './bottomHomeNavigator.routes';
-import StoryScreen from './../screens/StoryScreen/index';
+import StoryScreen from '../screens/StoryScreen';
 
 const RootStack = createStackNavigator();
 
@@ -18,7 +18,9 @@ const Router = () => (
     <RootStack.Screen
       name="Story"
       component={StoryScreen}
-      options={{headerShown: false}}
+      options={{
+        headerShown: false,
+      }}
     />
   </RootStack.Navigator>
 );

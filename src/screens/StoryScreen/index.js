@@ -21,7 +21,11 @@ import storiesData from '../../data/stories';
 import styles from './styles';
 import ProfilePicture from './../../components/ProfilePicture/index';
 
+import {graphqlOperation, API} from 'aws-amplify';
+import {listStorys} from '../../../graphql/queries';
+
 const StoryScreen = () => {
+  const [stories, setStories] = useState([]);
   const [userStories, setUserStories] = useState(null);
   const [activeStoryIndex, setActiveStoryIndex] = useState(0);
 
@@ -31,12 +35,18 @@ const StoryScreen = () => {
   console.log(userId);
 
   useEffect(() => {
-    const userStories = storiesData.find(
-      (storyData) => storyData.user.user_id === userId,
-    );
-    setUserStories(userStories);
+    fetchStories();
     setActiveStoryIndex(0);
   }, []);
+
+  const fetchStories = async () => {
+    try {
+      const storiesData = await API.graphql(graphqlOperation(listStorys));
+      setStories(storiesData.data.listStorys.items);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const navigateToNextUser = () => {
     navigation.push('Story', {userId: (pareseInt(userId) + 1).toString()});
@@ -69,7 +79,7 @@ const StoryScreen = () => {
     } else handleNextStory();
   };
 
-  if (!userStories) {
+  if (!stories || stories.length === 0) {
     return (
       <SafeAreaView>
         <ActivityIndicator />
@@ -77,18 +87,16 @@ const StoryScreen = () => {
     );
   }
 
-  const activeStory = userStories.stories[activeStoryIndex];
+  const activeStory = stories[activeStoryIndex];
 
   return (
     <SafeAreaView style={styles.container}>
       <TouchableWithoutFeedback onPress={handlePress}>
-        <ImageBackground
-          source={{uri: activeStory.imageUri}}
-          style={styles.image}>
+        <ImageBackground source={{uri: activeStory.image}} style={styles.image}>
           <View style={styles.userInfo}>
-            <ProfilePicture uri={userStories.user.imageUri} size={60} />
-            <Text style={styles.userName}> {userStories.user.name} </Text>
-            <Text style={styles.postedTime}> {activeStory.postedTime} </Text>
+            <ProfilePicture uri={activeStory.user.image} size={60} />
+            <Text style={styles.userName}> {activeStory.user.name} </Text>
+            <Text style={styles.postedTime}> {activeStory.createdAt} </Text>
           </View>
           <View style={styles.bottomContainer}>
             <View style={styles.cameraButton}>
